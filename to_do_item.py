@@ -10,7 +10,7 @@ class ToDoItem():
         while setting_name:
             name = input("Name: ")
             if len(name) > 20:
-                print("Name exceeed maximum characters (20)")
+                print("Name exceeed maximum characters (20)\n")
                 continue
             return name
 
@@ -19,7 +19,7 @@ class ToDoItem():
         while setting_description:
             description = input("Description: ")
             if len(description) > 150:
-                print("Description exceeds maximum characters (150)")
+                print("Description exceeds maximum characters (150)\n")
                 continue
             return description
 
