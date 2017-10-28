@@ -16,3 +16,10 @@ def display_item_details(to_do_list):
     item_index = int(input("Choose item index to view details: "))
     print("Description: " + to_do_list[item_index].description)
     print("Task finished:", to_do_list[item_index].is_done)
+
+def modify_item_attirbutes(to_do_list):
+    item_index = int(input("Choose item index to modify: "))
+    name = ToDoItem.item_name()
+    description = ToDoItem.item_description()
+    is_done = mark_progress_status()
+    to_do_list[item_index].modify_item_attirbutes(name, description, is_done)
