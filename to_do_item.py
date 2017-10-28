@@ -29,5 +29,10 @@ class ToDoItem():
         new_item = ToDoItem(name, description)
         return new_item
 
+    def modify_item_attirbutes(self, name, description, is_done):
+        self.name = name
+        self.description = description
+        self.is_done = is_done
+
     def __str__(self):
         return "Name: {}".format(self.name)
