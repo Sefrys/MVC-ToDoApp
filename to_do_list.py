@@ -17,9 +17,28 @@ def display_item_details(to_do_list):
     print("Description: " + to_do_list[item_index].description)
     print("Task finished:", to_do_list[item_index].is_done)
 
+
 def modify_item_attirbutes(to_do_list):
     item_index = int(input("Choose item index to modify: "))
     name = ToDoItem.item_name()
     description = ToDoItem.item_description()
     is_done = mark_progress_status()
     to_do_list[item_index].modify_item_attirbutes(name, description, is_done)
+
+
+def mark_progress_status():
+    marking_status = True
+    while marking_status:
+        status = input("Is task finished? Y/N: ").upper()
+        if status == "Y":
+            return True
+        elif status == "N":
+            return False
+        else:
+            print("Invalid input, choose Y/N")
+            continue
+
+
+def delete_item(to_do_list):
+    item_index = int(input("Choose index of item to delete: "))
+    to_do_list.pop(item_index)
