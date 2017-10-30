@@ -1,4 +1,5 @@
 from to_do_item import *
+from main import clear
 
 
 def add_item_to_list(to_do_list):
@@ -11,14 +12,28 @@ def display_list(to_do_list):
     else:
         item_index = 0
         for item in to_do_list:
-            print(item_index, item)
+            print("ID: {} - {}".format(item_index, item))
             item_index += 1
 
 
 def display_item_details(to_do_list):
-    item_index = int(input("Choose item index to view details: "))
-    print("Description: " + to_do_list[item_index].description)
-    print("Task finished:", to_do_list[item_index].is_done)
+    list_length = len(to_do_list) - 1
+
+    displaying_list = True
+    while displaying_list:
+        display_list(to_do_list)
+        entry_selection = input("\nChoose item ID to view details or Q to exit to menu: ").upper()
+        clear()
+        if entry_selection == "Q":
+            break
+        if all(x.isdigit() for x in entry_selection) and entry_selection is not "":
+            entry_selection = int(entry_selection)
+            clear()
+            if entry_selection < len(to_do_list):
+                print("Description: {} \nTask finished: {}".format(to_do_list[entry_selection].description,
+                                                                   to_do_list[entry_selection].is_done))
+        else:
+            print("Index doesn't exist. Choose one from between 0 and {}\n".format(list_length))
 
 
 def modify_item_attirbutes(to_do_list):

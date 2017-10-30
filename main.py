@@ -3,9 +3,11 @@ import sys
 import time
 from to_do_list import *
 
+
 def clear():
     """Clear the display"""
     os.system("cls" if os.name == "nt" else "clear")
+
 
 def main():
     menu_choices = """
