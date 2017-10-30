@@ -37,11 +37,24 @@ def display_item_details(to_do_list):
 
 
 def modify_item_attirbutes(to_do_list):
-    item_index = int(input("Choose item index to modify: "))
-    name = ToDoItem.item_name()
-    description = ToDoItem.item_description()
-    is_done = mark_progress_status()
-    to_do_list[item_index].modify_item_attirbutes(name, description, is_done)
+    list_length = len(to_do_list) - 1
+
+    modifying_list_item = True
+    while modifying_list_item:
+        display_list(to_do_list)
+        entry_selection = input("\nChoose item ID to modify or Q to exit to menu: ").upper()
+        if entry_selection == "Q":
+            break
+        if all(x.isdigit() for x in entry_selection) and entry_selection is not "":
+            entry_selection = int(entry_selection)
+            if entry_selection < len(to_do_list):
+                name = ToDoItem.item_name()
+                description = ToDoItem.item_description()
+                is_done = mark_progress_status()
+                to_do_list[entry_selection].modify_item_attirbutes(name, description, is_done)
+                clear()
+        else:
+            print("Index doesn't exist. Choose one from between 0 and {}\n".format(list_length))
 
 
 def mark_progress_status():
