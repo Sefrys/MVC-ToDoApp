@@ -19,8 +19,8 @@ def display_list(to_do_list):
 def display_item_details(to_do_list):
     list_length = len(to_do_list) - 1
 
-    displaying_list = True
-    while displaying_list:
+    displaying_list_items = True
+    while displaying_list_items:
         display_list(to_do_list)
         entry_selection = input("\nChoose item ID to view details or Q to exit to menu: ").upper()
         clear()
@@ -43,6 +43,7 @@ def modify_item_attirbutes(to_do_list):
     while modifying_list_item:
         display_list(to_do_list)
         entry_selection = input("\nChoose item ID to modify or Q to exit to menu: ").upper()
+        clear()
         if entry_selection == "Q":
             break
         if all(x.isdigit() for x in entry_selection) and entry_selection is not "":
@@ -52,6 +53,25 @@ def modify_item_attirbutes(to_do_list):
                 description = ToDoItem.item_description()
                 is_done = mark_progress_status()
                 to_do_list[entry_selection].modify_item_attirbutes(name, description, is_done)
+                clear()
+        else:
+            print("Index doesn't exist. Choose one from between 0 and {}\n".format(list_length))
+
+
+def delete_item(to_do_list):
+    list_length = len(to_do_list) - 1
+
+    deleting_list_item = True
+    while deleting_list_item:
+        display_list(to_do_list)
+        entry_selection = input("\nChoose item ID to delete or Q to exit to menu: ").upper()
+        clear()
+        if entry_selection == "Q":
+            break
+        if all(x.isdigit() for x in entry_selection) and entry_selection is not "":
+            entry_selection = int(entry_selection)
+            if entry_selection < len(to_do_list):
+                to_do_list.pop(entry_selection)
                 clear()
         else:
             print("Index doesn't exist. Choose one from between 0 and {}\n".format(list_length))
@@ -68,8 +88,3 @@ def mark_progress_status():
         else:
             print("Invalid input, choose Y/N")
             continue
-
-
-def delete_item(to_do_list):
-    item_index = int(input("Choose index of item to delete: "))
-    to_do_list.pop(item_index)
