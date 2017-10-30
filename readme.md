@@ -19,6 +19,3 @@ Display specific todo item's details
   display name
   display description
 Each action described above should have view.
-
-#1 - Create class ToDoItem
-#2 - Create class ToDoItemList
