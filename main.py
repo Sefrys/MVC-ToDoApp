@@ -37,7 +37,7 @@ def main():
             display_item_details(to_do_list)
         elif menu_choice == "4":
             clear()
-            modify_item(to_do_list)
+            modify_item_attirbutes(to_do_list)
         elif menu_choice == "5":
             clear()
             delete_item(to_do_list)
