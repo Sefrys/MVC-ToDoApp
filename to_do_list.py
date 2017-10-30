@@ -6,10 +6,13 @@ def add_item_to_list(to_do_list):
 
 
 def display_list(to_do_list):
-    item_index = 0
-    for item in to_do_list:
-        print(item_index, item)
-        item_index += 1
+    if len(to_do_list) == 0:
+        print("No entries to display.")
+    else:
+        item_index = 0
+        for item in to_do_list:
+            print(item_index, item)
+            item_index += 1
 
 
 def display_item_details(to_do_list):
